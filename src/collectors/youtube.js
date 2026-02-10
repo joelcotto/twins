@@ -23,7 +23,7 @@ export async function fetchYouTubeTrending(topic, maxResults = 5) {
         q: keyword,
         type: 'video',
         order: 'viewCount',
-        publishedAfter: getLastMonthDate(),
+        publishedAfter: getLastWeekDate(),
         maxResults,
         relevanceLanguage: 'es',
       });
@@ -73,9 +73,9 @@ export async function fetchYouTubeTrending(topic, maxResults = 5) {
   return unique.sort((a, b) => b.views - a.views).slice(0, maxResults * 2);
 }
 
-function getLastMonthDate() {
+function getLastWeekDate() {
   const date = new Date();
-  date.setMonth(date.getMonth() - 1);
+  date.setDate(date.getDate() - 7);
   return date.toISOString();
 }
 

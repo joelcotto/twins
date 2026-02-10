@@ -3,7 +3,7 @@ import { topics, platformConfig } from '../config/topics.js';
 import { fetchYouTubeTrending } from './collectors/youtube.js';
 import { fetchInstagramTrending } from './collectors/instagram.js';
 import { fetchFacebookTrending } from './collectors/facebook.js';
-import { generateReport } from './report/generator.js';
+import { generatePdfReport } from './report/generator.js';
 import { sendReport } from './email/sender.js';
 import { writeFileSync } from 'fs';
 
@@ -11,12 +11,12 @@ const isDryRun = process.argv.includes('--dry-run');
 
 async function main() {
   console.log('='.repeat(50));
-  console.log('  TWINS - Reporte Mensual de Contenido Trending');
+  console.log('  TWINS - Reporte Semanal de Contenido Trending');
   console.log('='.repeat(50));
   console.log();
 
   if (isDryRun) {
-    console.log('[Modo] Dry run - se generará el reporte sin enviar email.\n');
+    console.log('[Modo] Dry run - se generará el PDF sin enviar email.\n');
   }
 
   const reportData = [];
@@ -72,25 +72,26 @@ async function main() {
     reportData.push(topicResult);
   }
 
-  // Generar el reporte HTML
-  console.log('\n[Reporte] Generando HTML...');
-  const html = generateReport(reportData);
+  // Generar el reporte PDF
+  console.log('\n[Reporte] Generando PDF con gráficas...');
+  const pdfBuffer = await generatePdfReport(reportData);
 
-  // Guardar una copia local del reporte
-  const filename = `report-${new Date().toISOString().slice(0, 10)}.html`;
-  writeFileSync(filename, html);
-  console.log(`[Reporte] Guardado localmente: ${filename}`);
+  // Guardar una copia local del PDF
+  const dateStr = new Date().toISOString().slice(0, 10);
+  const filename = `reporte-semanal-${dateStr}.pdf`;
+  writeFileSync(filename, pdfBuffer);
+  console.log(`[Reporte] PDF guardado: ${filename} (${(pdfBuffer.length / 1024).toFixed(1)} KB)`);
 
   // Enviar por email (a menos que sea dry-run)
   if (!isDryRun) {
-    console.log('\n[Email] Enviando reporte...');
-    const sent = await sendReport(html);
+    console.log('\n[Email] Enviando reporte PDF...');
+    const sent = await sendReport(pdfBuffer, filename);
     if (!sent) {
-      console.log('[Email] El reporte se guardó localmente pero no se envió por email.');
+      console.log('[Email] El PDF se guardó localmente pero no se envió por email.');
     }
   } else {
-    console.log('\n[Dry Run] Reporte generado. No se envió email.');
-    console.log(`[Dry Run] Abre ${filename} en tu navegador para ver el reporte.`);
+    console.log('\n[Dry Run] PDF generado. No se envió email.');
+    console.log(`[Dry Run] Abre ${filename} para ver el reporte.`);
   }
 
   console.log('\n' + '='.repeat(50));

@@ -1,6 +1,18 @@
-# Twins - Reporte Mensual de Contenido Trending
+# Twins - Reporte Semanal de Contenido Trending (PDF)
 
-Sistema automatizado que recopila los videos y contenidos más vistos en **YouTube**, **Instagram** y **Facebook** sobre las industrias que te interesan, y te envía un reporte profesional por email una vez al mes.
+Sistema automatizado que recopila los videos y contenidos más vistos en **YouTube**, **Instagram** y **Facebook** sobre las industrias que te interesan, genera un **reporte PDF profesional con gráficas** y te lo envía por email cada semana.
+
+## Qué incluye el reporte PDF
+
+- Portada profesional con gradiente
+- Página de resumen con métricas totales
+- Gráfica de barras: contenido por plataforma
+- Gráfica de pastel: distribución porcentual
+- Gráfica de barras: contenido por industria
+- Una página por cada industria con:
+  - Gráfica de distribución
+  - Tabla con los top contenidos (título, canal, plataforma, vistas/likes)
+- Numeración de páginas y footer
 
 ## Industrias Monitoreadas
 
@@ -61,15 +73,15 @@ cp .env.example .env
 
 ### Ejecutar manualmente
 ```bash
-# Generar reporte y enviar por email
+# Generar reporte PDF y enviar por email
 npm start
 
-# Generar reporte SIN enviar email (prueba)
+# Generar PDF SIN enviar email (prueba)
 npm test
 ```
 
-### Ejecución automática mensual (GitHub Actions)
-El reporte se genera automáticamente el **día 1 de cada mes a las 9:00 AM UTC**.
+### Ejecución automática semanal (GitHub Actions)
+El reporte se genera automáticamente **cada lunes a las 9:00 AM UTC**.
 
 Para configurar GitHub Actions:
 1. Ve a tu repositorio en GitHub
@@ -81,7 +93,7 @@ Para configurar GitHub Actions:
    - `GMAIL_APP_PASSWORD`
    - `REPORT_EMAIL`
 
-También puedes ejecutarlo manualmente desde la pestaña **Actions** > **Monthly Trending Report** > **Run workflow**.
+También puedes ejecutarlo manualmente desde la pestaña **Actions** > **Weekly Trending Report** > **Run workflow**.
 
 ## Estructura del Proyecto
 
@@ -91,17 +103,19 @@ twins/
 │   └── topics.js              # Temas e industrias a monitorear
 ├── src/
 │   ├── index.js               # Orquestador principal
+│   ├── charts/
+│   │   └── draw.js            # Gráficas vectoriales (barras, pastel, tablas)
 │   ├── collectors/
 │   │   ├── youtube.js         # YouTube Data API v3
 │   │   ├── instagram.js       # Instagram (via RapidAPI)
 │   │   └── facebook.js        # Facebook (via RapidAPI)
 │   ├── report/
-│   │   └── generator.js       # Generador de reporte HTML
+│   │   └── generator.js       # Generador de PDF con gráficas
 │   └── email/
-│       └── sender.js          # Envío por Gmail SMTP
+│       └── sender.js          # Envío por Gmail SMTP (con PDF adjunto)
 ├── .github/
 │   └── workflows/
-│       └── monthly-report.yml # GitHub Actions (mensual)
+│       └── monthly-report.yml # GitHub Actions (semanal)
 ├── .env.example               # Plantilla de configuración
 ├── package.json
 └── README.md
@@ -122,9 +136,9 @@ Edita `config/topics.js` para cambiar los temas y palabras clave:
 
 ### Cambiar frecuencia
 Modifica el cron en `.github/workflows/monthly-report.yml`:
-- Semanal: `0 9 * * 1` (cada lunes)
-- Quincenal: `0 9 1,15 * *` (día 1 y 15)
-- Diario: `0 9 * * *` (todos los días)
+- Diario: `0 9 * * *`
+- Cada lunes y jueves: `0 9 * * 1,4`
+- Mensual (día 1): `0 9 1 * *`
 
 ## Licencia
 

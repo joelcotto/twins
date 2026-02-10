@@ -1,177 +1,131 @@
+import PDFDocument from 'pdfkit';
 import dayjs from 'dayjs';
+import {
+  drawBarChart,
+  drawPieChart,
+  drawContentTable,
+  COLORS,
+  PLATFORM_COLORS,
+  PLATFORM_NAMES,
+} from '../charts/draw.js';
 
 /**
- * Genera un reporte HTML profesional con el contenido trending recopilado.
+ * Genera un reporte PDF profesional con gráficas y tablas.
+ * Retorna un Buffer con el PDF.
  */
-export function generateReport(reportData) {
-  const now = dayjs();
-  const lastMonth = now.subtract(1, 'month');
-  const periodLabel = `${lastMonth.format('MMMM YYYY')}`;
+export async function generatePdfReport(reportData) {
+  return new Promise((resolve, reject) => {
+    const doc = new PDFDocument({
+      size: 'LETTER',
+      margins: { top: 40, bottom: 40, left: 50, right: 50 },
+      bufferPages: true,
+      info: {
+        Title: 'Reporte Semanal de Contenido Trending',
+        Author: 'Twins Report System',
+      },
+    });
 
-  return `
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reporte Mensual de Contenido Trending - ${periodLabel}</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #f0f2f5;
-      color: #1a1a2e;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      background: #ffffff;
-    }
-    .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 40px 30px;
-      text-align: center;
-    }
-    .header h1 {
-      font-size: 26px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .header p {
-      font-size: 14px;
-      opacity: 0.9;
-    }
-    .summary {
-      background: #f8f9ff;
-      padding: 20px 30px;
-      border-bottom: 1px solid #e8e8f0;
-    }
-    .summary-grid {
-      display: flex;
-      justify-content: space-around;
-      text-align: center;
-    }
-    .summary-item h3 {
-      font-size: 28px;
-      color: #667eea;
-    }
-    .summary-item p {
-      font-size: 12px;
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .topic-section {
-      padding: 25px 30px;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .topic-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 15px;
-      color: #1a1a2e;
-      border-left: 4px solid #667eea;
-      padding-left: 12px;
-    }
-    .platform-group {
-      margin-bottom: 15px;
-    }
-    .platform-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #fff;
-      padding: 4px 12px;
-      border-radius: 12px;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
-    .platform-youtube { background: #ff0000; }
-    .platform-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-    .platform-facebook { background: #1877f2; }
-    .content-card {
-      background: #fafbff;
-      border: 1px solid #e8e8f0;
-      border-radius: 8px;
-      padding: 14px;
-      margin-bottom: 10px;
-      transition: box-shadow 0.2s;
-    }
-    .content-card:hover {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .content-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    .content-title a {
-      color: #1a1a2e;
-      text-decoration: none;
-    }
-    .content-title a:hover {
-      color: #667eea;
-    }
-    .content-meta {
-      font-size: 12px;
-      color: #888;
-    }
-    .content-meta span {
-      margin-right: 12px;
-    }
-    .content-stats {
-      font-size: 12px;
-      color: #667eea;
-      font-weight: 600;
-      margin-top: 4px;
-    }
-    .footer {
-      background: #1a1a2e;
-      color: #aaa;
-      padding: 25px 30px;
-      text-align: center;
-      font-size: 12px;
-    }
-    .footer a { color: #667eea; }
-    .no-data {
-      color: #999;
-      font-style: italic;
-      font-size: 13px;
-      padding: 10px 0;
-    }
-    @media (max-width: 600px) {
-      .header h1 { font-size: 20px; }
-      .summary-grid { flex-direction: column; gap: 10px; }
-      .topic-section { padding: 15px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>Reporte Mensual de Contenido Trending</h1>
-      <p>Periodo: ${periodLabel} | Generado: ${now.format('DD/MM/YYYY HH:mm')}</p>
-    </div>
+    const chunks = [];
+    doc.on('data', (chunk) => chunks.push(chunk));
+    doc.on('end', () => resolve(Buffer.concat(chunks)));
+    doc.on('error', reject);
 
-    <div class="summary">
-      <div class="summary-grid">
-        ${buildSummaryItems(reportData)}
-      </div>
-    </div>
+    const now = dayjs();
+    const weekAgo = now.subtract(7, 'day');
+    const period = `${weekAgo.format('DD/MM/YYYY')} - ${now.format('DD/MM/YYYY')}`;
 
-    ${buildTopicSections(reportData)}
+    // ========== PORTADA ==========
+    drawCover(doc, period, now);
 
-    <div class="footer">
-      <p>Generado automáticamente por <strong>Twins Monthly Report</strong></p>
-      <p style="margin-top: 8px;">Para modificar los temas, edita <code>config/topics.js</code></p>
-    </div>
-  </div>
-</body>
-</html>`;
+    // ========== PÁGINA DE RESUMEN ==========
+    doc.addPage();
+    drawSummaryPage(doc, reportData);
+
+    // ========== PÁGINAS POR INDUSTRIA ==========
+    for (const topic of reportData) {
+      doc.addPage();
+      drawTopicPage(doc, topic);
+    }
+
+    // ========== FOOTER EN TODAS LAS PÁGINAS ==========
+    const totalPages = doc.bufferedPageRange().count;
+    for (let i = 0; i < totalPages; i++) {
+      doc.switchToPage(i);
+      drawFooter(doc, i + 1, totalPages);
+    }
+
+    doc.end();
+  });
 }
 
-function buildSummaryItems(reportData) {
+function drawCover(doc, period, now) {
+  const pageWidth = doc.page.width;
+  const pageHeight = doc.page.height;
+
+  // Fondo gradiente simulado (rectángulos)
+  const gradientSteps = 20;
+  const stepHeight = pageHeight / gradientSteps;
+  for (let i = 0; i < gradientSteps; i++) {
+    const r = Math.round(102 + (118 - 102) * (i / gradientSteps));
+    const g = Math.round(126 + (75 - 126) * (i / gradientSteps));
+    const b = Math.round(234 + (162 - 234) * (i / gradientSteps));
+    doc
+      .rect(0, i * stepHeight, pageWidth, stepHeight + 1)
+      .fillColor(`rgb(${r}, ${g}, ${b})`)
+      .fill();
+  }
+
+  // Título principal
+  doc.fontSize(36).fillColor(COLORS.white).font('Helvetica-Bold');
+  doc.text('REPORTE SEMANAL', 0, pageHeight * 0.3, {
+    width: pageWidth,
+    align: 'center',
+  });
+
+  doc.fontSize(20).font('Helvetica');
+  doc.text('Contenido Trending', 0, pageHeight * 0.3 + 50, {
+    width: pageWidth,
+    align: 'center',
+  });
+
+  // Línea decorativa
+  const lineY = pageHeight * 0.3 + 90;
+  doc
+    .moveTo(pageWidth * 0.3, lineY)
+    .lineTo(pageWidth * 0.7, lineY)
+    .strokeColor(COLORS.white)
+    .lineWidth(2)
+    .stroke();
+
+  // Plataformas
+  doc.fontSize(14).font('Helvetica');
+  doc.text('YouTube  |  Instagram  |  Facebook', 0, lineY + 20, {
+    width: pageWidth,
+    align: 'center',
+  });
+
+  // Periodo
+  doc.fontSize(12).font('Helvetica');
+  doc.text(`Periodo: ${period}`, 0, lineY + 55, {
+    width: pageWidth,
+    align: 'center',
+  });
+
+  // Fecha de generación
+  doc.fontSize(10).fillColor('rgba(255,255,255,0.8)');
+  doc.text(
+    `Generado: ${now.format('DD/MM/YYYY HH:mm')}`,
+    0,
+    pageHeight - 80,
+    { width: pageWidth, align: 'center' },
+  );
+}
+
+function drawSummaryPage(doc, reportData) {
+  // Título de sección
+  drawSectionTitle(doc, 'Resumen General');
+
+  // Calcular totales
   let totalYT = 0;
   let totalIG = 0;
   let totalFB = 0;
@@ -182,90 +136,173 @@ function buildSummaryItems(reportData) {
     totalFB += topic.facebook?.length || 0;
   }
 
-  return `
-    <div class="summary-item">
-      <h3>${totalYT}</h3>
-      <p>YouTube</p>
-    </div>
-    <div class="summary-item">
-      <h3>${totalIG}</h3>
-      <p>Instagram</p>
-    </div>
-    <div class="summary-item">
-      <h3>${totalFB}</h3>
-      <p>Facebook</p>
-    </div>
-    <div class="summary-item">
-      <h3>${reportData.length}</h3>
-      <p>Industrias</p>
-    </div>
-  `;
+  const total = totalYT + totalIG + totalFB;
+
+  // Métricas principales
+  doc.y += 10;
+  drawMetricBoxes(doc, [
+    { label: 'Total Contenidos', value: total.toString() },
+    { label: 'YouTube', value: totalYT.toString() },
+    { label: 'Instagram', value: totalIG.toString() },
+    { label: 'Facebook', value: totalFB.toString() },
+  ]);
+
+  doc.y += 20;
+
+  // Gráfica de barras: Contenido por plataforma
+  drawBarChart(doc, [
+    { label: 'YouTube', value: totalYT, color: COLORS.youtube },
+    { label: 'Instagram', value: totalIG, color: COLORS.instagram },
+    { label: 'Facebook', value: totalFB, color: COLORS.facebook },
+  ], {
+    title: 'Contenido Encontrado por Plataforma',
+    height: 140,
+  });
+
+  doc.y += 15;
+
+  // Gráfica de pastel: Distribución
+  drawPieChart(doc, [
+    { label: 'YouTube', value: totalYT, color: COLORS.youtube },
+    { label: 'Instagram', value: totalIG, color: COLORS.instagram },
+    { label: 'Facebook', value: totalFB, color: COLORS.facebook },
+  ], {
+    title: 'Distribución por Plataforma',
+  });
+
+  doc.y += 15;
+
+  // Gráfica de barras: Contenido por industria
+  const industryData = reportData.map((topic) => ({
+    label: topic.name,
+    value:
+      (topic.youtube?.length || 0) +
+      (topic.instagram?.length || 0) +
+      (topic.facebook?.length || 0),
+    color: COLORS.primary,
+  }));
+
+  if (doc.y + 250 > doc.page.height - 60) doc.addPage();
+
+  drawBarChart(doc, industryData, {
+    title: 'Contenido por Industria',
+    height: 300,
+  });
 }
 
-function buildTopicSections(reportData) {
-  return reportData
-    .map(
-      (topic) => `
-    <div class="topic-section">
-      <div class="topic-title">${topic.icon} ${topic.name}</div>
-      ${buildPlatformGroup('YouTube', 'youtube', topic.youtube)}
-      ${buildPlatformGroup('Instagram', 'instagram', topic.instagram)}
-      ${buildPlatformGroup('Facebook', 'facebook', topic.facebook)}
-    </div>
-  `,
-    )
-    .join('');
+function drawTopicPage(doc, topic) {
+  // Título de industria
+  drawSectionTitle(doc, `${topic.icon} ${topic.name}`);
+
+  // Mini resumen
+  const ytCount = topic.youtube?.length || 0;
+  const igCount = topic.instagram?.length || 0;
+  const fbCount = topic.facebook?.length || 0;
+
+  doc.fontSize(10).fillColor(COLORS.textLight).font('Helvetica');
+  doc.text(
+    `YouTube: ${ytCount} | Instagram: ${igCount} | Facebook: ${fbCount}`,
+    50,
+    doc.y + 5,
+    { width: 495 },
+  );
+  doc.y += 20;
+
+  // Gráfica de barras mini
+  drawBarChart(doc, [
+    { label: 'YouTube', value: ytCount, color: COLORS.youtube },
+    { label: 'Instagram', value: igCount, color: COLORS.instagram },
+    { label: 'Facebook', value: fbCount, color: COLORS.facebook },
+  ], {
+    title: 'Distribución de Contenido',
+    height: 120,
+  });
+
+  doc.y += 10;
+
+  // Combinar todos los items y mostrar los top
+  const allItems = [
+    ...(topic.youtube || []),
+    ...(topic.instagram || []),
+    ...(topic.facebook || []),
+  ].sort((a, b) => (b.views + b.likes) - (a.views + a.likes));
+
+  if (allItems.length > 0) {
+    // Verificar espacio disponible, agregar página si necesario
+    if (doc.y + 200 > doc.page.height - 60) doc.addPage();
+
+    doc.fontSize(13).fillColor(COLORS.text).font('Helvetica-Bold');
+    doc.text('Top Contenidos de la Semana', 50, doc.y, { width: 495 });
+    doc.y += 8;
+
+    drawContentTable(doc, allItems, { maxItems: 8 });
+  } else {
+    doc.fontSize(11).fillColor(COLORS.textLight).font('Helvetica');
+    doc.text('No se encontró contenido trending esta semana para esta industria.', 50, doc.y);
+  }
 }
 
-function buildPlatformGroup(label, cssClass, items) {
-  if (!items || items.length === 0) {
-    return `
-      <div class="platform-group">
-        <span class="platform-label platform-${cssClass}">${label}</span>
-        <p class="no-data">No se encontró contenido trending este mes.</p>
-      </div>
-    `;
+function drawSectionTitle(doc, title) {
+  const y = doc.y || 40;
+
+  // Línea decorativa
+  doc
+    .rect(50, y, 4, 24)
+    .fillColor(COLORS.primary)
+    .fill();
+
+  doc.fontSize(18).fillColor(COLORS.text).font('Helvetica-Bold');
+  doc.text(title, 62, y + 2, { width: 480 });
+
+  // Línea separadora
+  doc
+    .moveTo(50, y + 32)
+    .lineTo(545, y + 32)
+    .strokeColor(COLORS.border)
+    .lineWidth(1)
+    .stroke();
+
+  doc.y = y + 42;
+}
+
+function drawMetricBoxes(doc, metrics) {
+  const boxWidth = 110;
+  const boxHeight = 60;
+  const gap = 15;
+  const startX = 50;
+  const y = doc.y;
+
+  for (let i = 0; i < metrics.length; i++) {
+    const x = startX + i * (boxWidth + gap);
+
+    // Box background
+    doc.roundedRect(x, y, boxWidth, boxHeight, 6).fillColor(COLORS.background).fill();
+    doc.roundedRect(x, y, boxWidth, boxHeight, 6).strokeColor(COLORS.border).lineWidth(0.5).stroke();
+
+    // Value
+    doc.fontSize(22).fillColor(COLORS.primary).font('Helvetica-Bold');
+    doc.text(metrics[i].value, x, y + 10, { width: boxWidth, align: 'center' });
+
+    // Label
+    doc.fontSize(8).fillColor(COLORS.textLight).font('Helvetica');
+    doc.text(metrics[i].label, x, y + 38, {
+      width: boxWidth,
+      align: 'center',
+    });
   }
 
-  const cards = items
-    .map(
-      (item) => `
-    <div class="content-card">
-      <div class="content-title">
-        <a href="${item.url}" target="_blank">${escapeHtml(item.title)}</a>
-      </div>
-      <div class="content-meta">
-        <span>@${escapeHtml(item.channel)}</span>
-        <span>${item.publishedAt ? dayjs(item.publishedAt).format('DD/MM/YYYY') : ''}</span>
-      </div>
-      <div class="content-stats">
-        ${item.views ? `${formatNumber(item.views)} vistas` : ''}
-        ${item.views && item.likes ? ' · ' : ''}
-        ${item.likes ? `${formatNumber(item.likes)} likes` : ''}
-      </div>
-    </div>
-  `,
-    )
-    .join('');
-
-  return `
-    <div class="platform-group">
-      <span class="platform-label platform-${cssClass}">${label}</span>
-      ${cards}
-    </div>
-  `;
+  doc.y = y + boxHeight + 10;
 }
 
-function formatNumber(num) {
-  if (num >= 1_000_000) return (num / 1_000_000).toFixed(1) + 'M';
-  if (num >= 1_000) return (num / 1_000).toFixed(1) + 'K';
-  return num.toString();
-}
+function drawFooter(doc, page, total) {
+  if (page === 1) return; // No footer on cover
 
-function escapeHtml(text) {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+  const y = doc.page.height - 30;
+  doc.fontSize(8).fillColor(COLORS.textLight).font('Helvetica');
+  doc.text(
+    `Twins Weekly Report | Página ${page} de ${total}`,
+    50,
+    y,
+    { width: doc.page.width - 100, align: 'center' },
+  );
 }
