@@ -1,0 +1,28 @@
+{
+  "name": "twins-monthly-report",
+  "version": "1.0.0",
+  "description": "Monthly trending content report from YouTube, Instagram & Facebook",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node src/index.js --dry-run"
+  },
+  "keywords": [
+    "report",
+    "social-media",
+    "youtube",
+    "instagram",
+    "facebook",
+    "trending"
+  ],
+  "author": "joelcotto",
+  "license": "MIT",
+  "dependencies": {
+    "googleapis": "^144.0.0",
+    "axios": "^1.7.0",
+    "nodemailer": "^6.9.0",
+    "dotenv": "^16.4.0",
+    "dayjs": "^1.11.0"
+  }
+}
