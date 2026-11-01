@@ -1,0 +1,127 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: G,Tinos,72,&H00FFFFFF,&H00FFFFFF,&H00FFFFFF,&H00000000,1,0,0,0,100,100,0,0,1,7,0,2,60,60,0,1
+Style: T,Tinos,72,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,0,3,2,60,60,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:01.40,0:00:02.74,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}En seis meses
+Dialogue: 1,0:00:01.40,0:00:02.74,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}En seis meses
+Dialogue: 0,0:00:02.74,0:00:04.40,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}logramos\N{\fs112}50.000{\fs72}\Nseguidores
+Dialogue: 1,0:00:02.74,0:00:04.40,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}logramos\N{\fs112}50.000{\fs72}\Nseguidores
+Dialogue: 0,0:00:04.40,0:00:05.22,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}lo hicimos con una cuenta
+Dialogue: 1,0:00:04.40,0:00:05.22,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}lo hicimos con una cuenta
+Dialogue: 0,0:00:05.22,0:00:05.94,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}dedicada al\N{\fs112}GOLF{\fs72}
+Dialogue: 1,0:00:05.22,0:00:05.94,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}dedicada al\N{\fs112}GOLF{\fs72}
+Dialogue: 0,0:00:05.94,0:00:07.58,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}llamada\N{\fs112}GOLF WISDOM{\fs72}
+Dialogue: 1,0:00:05.94,0:00:07.58,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}llamada\N{\fs112}GOLF WISDOM{\fs72}
+Dialogue: 0,0:00:07.58,0:00:08.46,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}¿cómo lo hicimos?
+Dialogue: 1,0:00:07.58,0:00:08.46,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}¿cómo lo hicimos?
+Dialogue: 0,0:00:08.46,0:00:09.26,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}{\fs112}REPOSTEANDO{\fs72}\Ncontenido
+Dialogue: 1,0:00:08.46,0:00:09.26,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}{\fs112}REPOSTEANDO{\fs72}\Ncontenido
+Dialogue: 0,0:00:09.26,0:00:10.04,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}que ya existía
+Dialogue: 1,0:00:09.26,0:00:10.04,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}que ya existía
+Dialogue: 0,0:00:10.04,0:00:11.60,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}hecho por\N{\fs112}OTRAS PERSONAS{\fs72}
+Dialogue: 1,0:00:10.04,0:00:11.60,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}hecho por\N{\fs112}OTRAS PERSONAS{\fs72}
+Dialogue: 0,0:00:11.60,0:00:13.12,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}siendo bien\N{\fs112}CONSISTENTES{\fs72}
+Dialogue: 1,0:00:11.60,0:00:13.12,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}siendo bien\N{\fs112}CONSISTENTES{\fs72}
+Dialogue: 0,0:00:13.12,0:00:14.48,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}publicamos\N{\fs112}TODOS LOS DÍAS{\fs72}
+Dialogue: 1,0:00:13.12,0:00:14.48,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}publicamos\N{\fs112}TODOS LOS DÍAS{\fs72}
+Dialogue: 0,0:00:14.48,0:00:15.26,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}{\fs112}DOS O TRES{\fs72}\Nveces
+Dialogue: 1,0:00:14.48,0:00:15.26,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}{\fs112}DOS O TRES{\fs72}\Nveces
+Dialogue: 0,0:00:15.26,0:00:16.07,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}sin fallar
+Dialogue: 1,0:00:15.26,0:00:16.07,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}sin fallar
+Dialogue: 0,0:00:16.82,0:00:18.00,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}¿por qué lo hicimos?
+Dialogue: 1,0:00:16.82,0:00:18.00,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}¿por qué lo hicimos?
+Dialogue: 0,0:00:18.00,0:00:19.54,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}Queríamos\N{\fs112}DEMOSTRAR{\fs72}\Nalgo
+Dialogue: 1,0:00:18.00,0:00:19.54,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}Queríamos\N{\fs112}DEMOSTRAR{\fs72}\Nalgo
+Dialogue: 0,0:00:19.54,0:00:20.40,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}muchas cuentas
+Dialogue: 1,0:00:19.54,0:00:20.40,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}muchas cuentas
+Dialogue: 0,0:00:20.40,0:00:21.46,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}con\N{\fs112}MILLONES{\fs72}\Nde seguidores
+Dialogue: 1,0:00:20.40,0:00:21.46,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}con\N{\fs112}MILLONES{\fs72}\Nde seguidores
+Dialogue: 0,0:00:21.46,0:00:22.94,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}crecieron en\N{\fs112}POCO TIEMPO{\fs72}
+Dialogue: 1,0:00:21.46,0:00:22.94,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}crecieron en\N{\fs112}POCO TIEMPO{\fs72}
+Dialogue: 0,0:00:22.94,0:00:24.70,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}se hicieron así
+Dialogue: 1,0:00:22.94,0:00:24.70,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}se hicieron así
+Dialogue: 0,0:00:24.70,0:00:25.52,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}compartiendo contenido
+Dialogue: 1,0:00:24.70,0:00:25.52,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}compartiendo contenido
+Dialogue: 0,0:00:25.52,0:00:27.18,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}que\N{\fs112}NO ERA DE ELLOS{\fs72}
+Dialogue: 1,0:00:25.52,0:00:27.18,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}que\N{\fs112}NO ERA DE ELLOS{\fs72}
+Dialogue: 0,0:00:27.18,0:00:28.72,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}y les\N{\fs112}FUNCIONÓ{\fs72}
+Dialogue: 1,0:00:27.18,0:00:28.72,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}y les\N{\fs112}FUNCIONÓ{\fs72}
+Dialogue: 0,0:00:28.72,0:00:30.28,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}te da\N{\fs112}ALCANCE{\fs72}
+Dialogue: 1,0:00:28.72,0:00:30.28,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}te da\N{\fs112}ALCANCE{\fs72}
+Dialogue: 0,0:00:30.28,0:00:30.82,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}te da\N{\fs112}NÚMEROS{\fs72}
+Dialogue: 1,0:00:30.28,0:00:30.82,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}te da\N{\fs112}NÚMEROS{\fs72}
+Dialogue: 0,0:00:30.82,0:00:32.90,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}y hasta te puede\N{\fs112}MONETIZAR{\fs72}
+Dialogue: 1,0:00:30.82,0:00:32.90,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}y hasta te puede\N{\fs112}MONETIZAR{\fs72}
+Dialogue: 0,0:00:32.90,0:00:34.32,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}pero ahí está el\N{\fs112}PROBLEMA{\fs72}
+Dialogue: 1,0:00:32.90,0:00:34.32,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}pero ahí está el\N{\fs112}PROBLEMA{\fs72}
+Dialogue: 0,0:00:34.32,0:00:35.16,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}la gente confunde
+Dialogue: 1,0:00:34.32,0:00:35.16,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}la gente confunde
+Dialogue: 0,0:00:35.16,0:00:37.12,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}{\fs112}SEGUIDORES{\fs72}\Ncon\N{\fs112}COMUNIDAD{\fs72}
+Dialogue: 1,0:00:35.16,0:00:37.12,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}{\fs112}SEGUIDORES{\fs72}\Ncon\N{\fs112}COMUNIDAD{\fs72}
+Dialogue: 0,0:00:37.12,0:00:39.00,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}antes, tener muchos seguidores
+Dialogue: 1,0:00:37.12,0:00:39.00,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}antes, tener muchos seguidores
+Dialogue: 0,0:00:39.00,0:00:39.92,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}era\N{\fs112}SUFICIENTE{\fs72}
+Dialogue: 1,0:00:39.00,0:00:39.92,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}era\N{\fs112}SUFICIENTE{\fs72}
+Dialogue: 0,0:00:39.92,0:00:40.74,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}{\fs112}HOY NO.{\fs72}
+Dialogue: 1,0:00:39.92,0:00:40.74,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}{\fs112}HOY NO.{\fs72}
+Dialogue: 0,0:00:40.74,0:00:41.28,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}Lo que vale es
+Dialogue: 1,0:00:40.74,0:00:41.28,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}Lo que vale es
+Dialogue: 0,0:00:41.28,0:00:42.34,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}{\fs112}CONTENIDO PROPIO{\fs72}
+Dialogue: 1,0:00:41.28,0:00:42.34,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}{\fs112}CONTENIDO PROPIO{\fs72}
+Dialogue: 0,0:00:42.34,0:00:43.62,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}sólido y\N{\fs112}CREATIVO{\fs72}
+Dialogue: 1,0:00:42.34,0:00:43.62,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}sólido y\N{\fs112}CREATIVO{\fs72}
+Dialogue: 0,0:00:43.62,0:00:44.52,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}eso hace que la gente
+Dialogue: 1,0:00:43.62,0:00:44.52,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}eso hace que la gente
+Dialogue: 0,0:00:44.52,0:00:44.90,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}{\fs112}SE QUEDE{\fs72}
+Dialogue: 1,0:00:44.52,0:00:44.90,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}{\fs112}SE QUEDE{\fs72}
+Dialogue: 0,0:00:44.90,0:00:45.42,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}{\fs112}CONFÍE{\fs72}
+Dialogue: 1,0:00:44.90,0:00:45.42,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}{\fs112}CONFÍE{\fs72}
+Dialogue: 0,0:00:45.42,0:00:47.44,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}y vuelva a la cuenta
+Dialogue: 1,0:00:45.42,0:00:47.44,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}y vuelva a la cuenta
+Dialogue: 0,0:00:47.44,0:00:48.86,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}una cosa es que\N{\fs112}TE VEAN{\fs72}
+Dialogue: 1,0:00:47.44,0:00:48.86,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}una cosa es que\N{\fs112}TE VEAN{\fs72}
+Dialogue: 0,0:00:48.86,0:00:50.42,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}y otra que\N{\fs112}TE SIGAN{\fs72}
+Dialogue: 1,0:00:48.86,0:00:50.42,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}y otra que\N{\fs112}TE SIGAN{\fs72}
+Dialogue: 0,0:00:50.42,0:00:51.90,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}por\N{\fs112}QUIÉN ERES{\fs72}
+Dialogue: 1,0:00:50.42,0:00:51.90,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}por\N{\fs112}QUIÉN ERES{\fs72}
+Dialogue: 0,0:00:51.90,0:00:53.30,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}si queremos construir
+Dialogue: 1,0:00:51.90,0:00:53.30,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}si queremos construir
+Dialogue: 0,0:00:53.30,0:00:54.16,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}una\N{\fs112}MARCA{\fs72}
+Dialogue: 1,0:00:53.30,0:00:54.16,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}una\N{\fs112}MARCA{\fs72}
+Dialogue: 0,0:00:54.16,0:00:55.84,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}los seguidores\N{\fs112}NO LA CONSTRUYEN{\fs72}
+Dialogue: 1,0:00:54.16,0:00:55.84,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}los seguidores\N{\fs112}NO LA CONSTRUYEN{\fs72}
+Dialogue: 0,0:00:55.84,0:00:56.66,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}la construye la gente
+Dialogue: 1,0:00:55.84,0:00:56.66,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}la construye la gente
+Dialogue: 0,0:00:56.66,0:00:57.22,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}que de verdad
+Dialogue: 1,0:00:56.66,0:00:57.22,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}que de verdad
+Dialogue: 0,0:00:57.22,0:00:58.76,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}{\fs112}LE IMPORTA{\fs72}\Nlo que haces
+Dialogue: 1,0:00:57.22,0:00:58.76,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}{\fs112}LE IMPORTA{\fs72}\Nlo que haces
+Dialogue: 0,0:00:58.76,0:01:00.66,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}y el\N{\fs112}CONTENIDO{\fs72}\Nque haces
+Dialogue: 1,0:00:58.76,0:01:00.66,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}y el\N{\fs112}CONTENIDO{\fs72}\Nque haces
+Dialogue: 0,0:01:00.66,0:01:02.94,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}el reposteo te da\N{\fs112}NÚMEROS{\fs72}
+Dialogue: 1,0:01:00.66,0:01:02.94,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}el reposteo te da\N{\fs112}NÚMEROS{\fs72}
+Dialogue: 0,0:01:02.94,0:01:04.68,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}lo original te da\N{\fs112}COMUNIDAD{\fs72}
+Dialogue: 1,0:01:02.94,0:01:04.68,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}lo original te da\N{\fs112}COMUNIDAD{\fs72}
+Dialogue: 0,0:01:04.68,0:01:05.64,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}y a largo plazo
+Dialogue: 1,0:01:04.68,0:01:05.64,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}y a largo plazo
+Dialogue: 0,0:01:05.64,0:01:07.16,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}si buscamos\N{\fs112}VENDER{\fs72}
+Dialogue: 1,0:01:05.64,0:01:07.16,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}si buscamos\N{\fs112}VENDER{\fs72}
+Dialogue: 0,0:01:07.16,0:01:08.82,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}{\fs112}CRECER{\fs72}\No lo que sea
+Dialogue: 1,0:01:07.16,0:01:08.82,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}{\fs112}CRECER{\fs72}\No lo que sea
+Dialogue: 0,0:01:08.82,0:01:09.52,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}no lo logran
+Dialogue: 1,0:01:08.82,0:01:09.52,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}no lo logran
+Dialogue: 0,0:01:09.52,0:01:10.74,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}solo los\N{\fs112}NÚMEROS{\fs72}
+Dialogue: 1,0:01:09.52,0:01:10.74,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}solo los\N{\fs112}NÚMEROS{\fs72}
+Dialogue: 0,0:01:10.74,0:01:12.06,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}lo logra la\N{\fs112}COMUNIDAD{\fs72}
+Dialogue: 1,0:01:10.74,0:01:12.06,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}lo logra la\N{\fs112}COMUNIDAD{\fs72}
+Dialogue: 0,0:01:12.06,0:01:13.44,G,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)\blur10\3a&HC8&}espero que les sirva
+Dialogue: 1,0:01:12.06,0:01:13.44,T,,0,0,0,,{\an2\pos(540,1560)\fad(70,0)}espero que les sirva
